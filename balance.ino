@@ -33,10 +33,16 @@ void loop() {
     Wire.requestFrom(MPU_ADDR, 7*2, true);
  
     gyro_y = Wire.read()<<8 | Wire.read(); 
-    Serial.print(" | Y = "); Serial.print(convert_int16_to_str(gyro_y));
+    Serial.print(" | Y = "); Serial.print(gyro_y);
     Serial.println();
 
-    
+    if (gyro_y >= 10000) {
+        naprej();
+    } else if (gyro_y <= -10000) {
+        nazaj();
+    } else {
+        prmer();
+    }
 }
 
 void naprej() {
@@ -50,5 +56,12 @@ void nazaj() {
     digitalWrite(IN1,HIGH);  // nazaj [/]
     digitalWrite(IN2,LOW);
     digitalWrite(IN3,HIGH);
+    digitalWrite(IN4,LOW);
+}
+
+void prmer() {
+    digitalWrite(IN1,LOW);  // PRMER [|]
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN3,LOW);
     digitalWrite(IN4,LOW);
 }
