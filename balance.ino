@@ -7,11 +7,6 @@ int IN3 = 7;
 int IN4 = 8;
 
 int16_t gyro_x, gyro_y, gyro_z; // variables for gyro raw data
-char tmp_str[7]; // temporary variable used in convert function
-char* convert_int16_to_str(int16_t i) { // converts int16 to string. Moreover, resulting strings will have the same length in the debug monitor.
-    sprintf(tmp_str, "%6d", i);
-    return tmp_str;
-}
 
 void setup() {
     Serial.begin(9600);
