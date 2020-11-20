@@ -20,6 +20,10 @@ void setup() {
     Wire.write(0x6B); 
     Wire.write(0); //wakes up mpu6050
     Wire.endTransmission(true);
+    for (int i = 5; i <9; i ++)
+    {
+    pinMode(i, OUTPUT);  
+    }
 }
 
 void loop() {
