@@ -1,10 +1,10 @@
 #include "Wire.h"
 const int MPU_ADDR = 0x68; // I2C address
 
-int IN1=5;
-int IN2=6;
-int IN3=7;
-int IN4=8;
+int IN1 = 5;
+int IN2 = 6;
+int IN3 = 7;
+int IN4 = 8;
 
 int16_t gyro_x, gyro_y, gyro_z; // variables for gyro raw data
 char tmp_str[7]; // temporary variable used in convert function
@@ -18,12 +18,12 @@ void setup() {
     Wire.begin();
     Wire.beginTransmission(MPU_ADDR);
     Wire.write(0x6B); 
-    Wire.write(0); //wakes up mpu6050
+    Wire.write(0); //wakes up mpu6050.
     Wire.endTransmission(true);
-    for (int i = 5; i <9; i ++)
-    {
-    pinMode(i, OUTPUT);  
-    }
+    pinMode(IN1, OUTPUT);
+    pinMode(IN2, OUTPUT);
+    pinMode(IN3, OUTPUT);
+    pinMode(IN4, OUTPUT);
 }
 
 void loop() {
@@ -35,4 +35,20 @@ void loop() {
     gyro_y = Wire.read()<<8 | Wire.read(); 
     Serial.print(" | Y = "); Serial.print(convert_int16_to_str(gyro_y));
     Serial.println();
+
+    
+}
+
+void naprej() {
+    digitalWrite(IN1,LOW);  // naprej [\]
+    digitalWrite(IN2,HIGH);
+    digitalWrite(IN3,LOW);
+    digitalWrite(IN4,HIGH);
+}
+
+void nazaj() {
+    digitalWrite(IN1,HIGH);  // nazaj [/]
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN3,HIGH);
+    digitalWrite(IN4,LOW);
 }
