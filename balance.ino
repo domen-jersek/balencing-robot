@@ -31,9 +31,9 @@ void loop() {
     Serial.print(" | Y = "); Serial.print(gyro_y);
     Serial.println();
 
-    if (gyro_y >= 10000) {
+    if (gyro_y >= 1500) {
         naprej();
-    } else if (gyro_y <= -10000) {
+    } else if (gyro_y <= -1500) {
         nazaj();
     } else {
         prmer();
