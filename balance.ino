@@ -1,12 +1,12 @@
 #include "Wire.h"
 const int MPU_ADDR = 0x68; // I2C address
 
-int IN1 = 5;
-int IN2 = 6;
-int IN3 = 7;
-int IN4 = 8;
-int ENA=9;
-int ENB=10;
+const int IN1 = 5;
+const int IN2 = 6;
+const int IN3 = 7;
+const int IN4 = 8;
+const int ENA = 9;
+const int ENB = 10;
 
 int16_t gyro_x, gyro_y, gyro_z; // variables for gyro raw data
 
