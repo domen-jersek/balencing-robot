@@ -5,6 +5,8 @@ int IN1 = 5;
 int IN2 = 6;
 int IN3 = 7;
 int IN4 = 8;
+int ENA=9;
+int ENB=10;
 
 int16_t gyro_x, gyro_y, gyro_z; // variables for gyro raw data
 
@@ -31,9 +33,9 @@ void loop() {
     Serial.print(" | Y = "); Serial.print(gyro_y);
     Serial.println();
 
-    if (gyro_y >= 1500) {
+    if (gyro_y >= -700) {
         naprej();
-    } else if (gyro_y <= -1500) {
+    } else if (gyro_y <= 1200) {
         nazaj();
     } else {
         prmer();
@@ -51,7 +53,7 @@ void nazaj() {
     digitalWrite(IN1,HIGH);  // nazaj [/]
     digitalWrite(IN2,LOW);
     digitalWrite(IN3,HIGH);
-    digitalWrite(IN4,LOW);
+    digitalWrite(IN4,LOW);   
 }
 
 void prmer() {
